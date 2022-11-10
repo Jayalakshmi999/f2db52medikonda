@@ -47,8 +47,8 @@ async function recreateDB() {
 }
 let instance2 = new
   Bakery({
-    cakeCost: 10, cookieCost: 25,
-    cooldrinkCost: 40
+    cakeCost: 100, cookieCost: 30,
+    cooldrinkCost: 400
   });
 instance2.save(function (err, doc) {
   if (err) return console.error(err);
