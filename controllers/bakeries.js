@@ -53,8 +53,25 @@ exports.Bakery_delete = function(req, res) {
 }; 
  
 // Handle Costume update form on PUT. 
-exports.Bakery_update_put = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Bakery update PUT' + req.params.id); 
+//Handle Costume update form on PUT. 
+exports.Bakery_update_put = async function(req, res) { 
+    console.log(`update on id ${req.params.id} with body 
+${JSON.stringify(req.body)}`) 
+    try { 
+        let toUpdate = await Bakery.findById( req.params.id) 
+        // Do updates of properties 
+        if(req.body.cakeCost)  
+               toUpdate.cakeCost = req.body.cakeCost; 
+        if(req.body.cookieCost) toUpdate.cookieCost = req.body.cookieCost; 
+        if(req.body.cooldrinkCost) toUpdate.cooldrinkCost = req.body.cooldrinkCost; 
+        let result = await toUpdate.save(); 
+        console.log("Sucess " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": ${err}: Update for id ${req.params.id} 
+failed`); 
+    } 
 }; 
 // VIEWS 
 // Handle a show all view 
