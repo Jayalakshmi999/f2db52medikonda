@@ -19,6 +19,9 @@ router.get('/detail', Bakery_controllers.Bakery_view_one_Page);
  
 // POST request for creating a Costume.  
 router.post('/bakeries', Bakery_controller.Bakery_create_post); 
+
+/* GET create costume page */ 
+router.get('/create', Bakery_controllers.Bakery_create_Page); 
  
 // DELETE request to delete Costume. 
 router.delete('/bakeries/:id', Bakery_controller.Bakery_delete); 
