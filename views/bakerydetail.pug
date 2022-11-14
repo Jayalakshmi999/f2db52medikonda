@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let bakeryid = toShow._id 
+  - let cakeCost = toShow.cakeCost
+  - let cookieCost = toShow.cookieCost
+  - let cooldrinkCost = toShow.cooldrinkCost
+  div 
+    div.row 
+      div(class='bakeryAttr mr-3') Bakery ID is: 
+      div #{bakeryid} 
+    div.row 
+      div(class='bakeryAttr mr-3') Cake Cost is: 
+      div #{cakeCost} 
+    div.row 
+      div(class='bakeryAttr mr-3') Cookie Cost is: 
+      div #{cookieCost} 
+    div.row 
+      div(class='bakeryAttr mr-3') Cooldrink Cost is: 
+      div #{cooldrinkCost} 

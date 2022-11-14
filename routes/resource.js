@@ -4,11 +4,16 @@ var router = express.Router();
 // Require controller modules. 
 var api_controller = require('../controllers/api'); 
 var Bakery_controller = require('../controllers/bakeries'); 
+var Bakery_controllers=require('../controllers/bakeries_views')
  
 /// API ROUTE /// 
  
 // GET resources base. 
 router.get('/', api_controller.api); 
+
+/* GET detail costume page */ 
+router.get('/detail', Bakery_controllers.Bakery_view_one_Page); 
+ 
  
 /// COSTUME ROUTES /// 
  
