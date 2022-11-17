@@ -6,14 +6,14 @@ block content
   form(id='BakeryForm', action="/resource/bakeries", method="POST") 
     div.form-group 
         label.bakeryAttr(for='cakeCost') Cake Cost  
-        input#cakeCost(type='number', name='cakeCost') 
+        input#cakeCost(type='number',class="form-control", name='cakeCost') 
     div.form-group 
         label.bakeryAttr(for='cookieCost') Cookie Cost 
-        input#cookieCost(type='number', name='cookieCost') 
+        input#cookieCost(type='number',class="form-control", name='cookieCost') 
     div.form-group 
         label.bakeryAttr(for='cooldrinkCost') Cooldrink Cost
-        input#cooldrinkCost(type='number', name='cooldrinkCost') 
-    input(type="submit") 
+        input#cooldrinkCost(type='number',class="form-control", name='cooldrinkCost') 
+    input(class="btn btn-info m-2" type="submit") 
  
   script. 
     document.forms['BakeryForm'].addEventListener('submit', (event) => { 
