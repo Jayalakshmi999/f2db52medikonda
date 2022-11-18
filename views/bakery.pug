@@ -8,7 +8,9 @@ block content
   div(class="container-fluid mt-3")
   div(class="row")
     each items,i in result
+        - let destination = `dispatch(\"/resource/update?id=${items._id}\")`
         div(class="col-sm-2" )  cakeCost:#{items.cakeCost} ,<br /> cookieCost: #{items.cookieCost} ,<br />cooldrinkCost: #{items.cooldrinkCost}
+        button.btn( class="btn-primary ml-1", onclick= destination) Update
   br
   div(class="container-fluid")
     div(class="row")
@@ -20,3 +22,7 @@ block content
     function buy(index) {
       alert(`You purchased item ${index}`);
     }
+  script. 
+    function dispatch(path){ 
+      window.location.href=path 
+    } 
