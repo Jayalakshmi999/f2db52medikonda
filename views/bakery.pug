@@ -2,15 +2,25 @@ extends layout
 
 block content
   h1= title
+   - let create_destination = `dispatch(\"/resource/create")`
+  button.btn.btn-success(type="button" id="create" onclick= create_destination ) Create
   p Welcome to #{title}
+  
   //-let results = [{cakeCost:9, cookieCost:5, cooldrinkCost:1},{cakeCost:10, cookieCost:6, cooldrinkCost:2},{cakeCost:15, cookieCost:5, cooldrinkCost:3}]
   - result=results ;
   div(class="container-fluid mt-3")
   div(class="row")
     each items,i in result
-        - let destination = `dispatch(\"/resource/update?id=${items._id}\")`
-        div(class="col-sm-2" )  cakeCost:#{items.cakeCost} ,<br /> cookieCost: #{items.cookieCost} ,<br />cooldrinkCost: #{items.cooldrinkCost}
-        button.btn( class="btn-primary ml-1", onclick= destination) Update
+        - let update_destination = `dispatch(\"/resource/update?id=${items._id}\")`
+        - let delete_destination = `dispatch(\"/resource/delete?id=${items._id}\")`
+        - let detailview_destination = `dispatch(\"/resource/detail?id=${items._id}\")`
+
+        div(class="col-sm-12" )  cakeCost:#{items.cakeCost} ,<br /> cookieCost: #{items.cookieCost} ,<br />cooldrinkCost: #{items.cooldrinkCost},<br />
+      
+          button.btn.btn-primary(type="button" onclick= update_destination) Update
+            button.btn.btn-info(type="button" onclick= detailview_destination) Detail View
+              button.btn.btn-danger(type="button" onclick= delete_destination) Delete 
+            br
   br
   div(class="container-fluid")
     div(class="row")
