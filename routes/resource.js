@@ -33,7 +33,7 @@ router.get('/delete', Bakery_controllers.Bakery_delete_Page);
 router.put('/bakeries/:id', Bakery_controller.Bakery_update_put); 
 
 /* GET create update page */ 
-router.get('/update', Bakery_controllers.Bakery_update_Page); 
+router.get('/update',Bakery_controller.secured, Bakery_controllers.Bakery_update_Page); 
  
 // GET request for one Costume. 
 router.get('/bakeries/:id', Bakery_controller.Bakery_detail); 

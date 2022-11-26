@@ -24,20 +24,7 @@ mongoose.connect(connectionString,
     useUnifiedTopology: true
   });
 
-  //middleware
-  passport.use(new LocalStrategy( 
-    function(username, password, done) { 
-      Account.findOne({ username: username }, function (err, user) { 
-        if (err) { return done(err); } 
-        if (!user) { 
-          return done(null, false, { message: 'Incorrect username.' }); 
-        } 
-        if (!user.validPassword(password)) { 
-          return done(null, false, { message: 'Incorrect password.' }); 
-        } 
-        return done(null, user); 
-      }); 
-    })) ;
+  
 
 //Get the default connection 
 var db = mongoose.connection;
@@ -52,6 +39,7 @@ async function recreateDB() {
   // Delete everything 
   await Bakery.deleteMany();
 
+
   let instance1 = new
     Bakery({
       cakeCost: 20, cookieCost: 30,
@@ -61,11 +49,11 @@ async function recreateDB() {
     if (err) return console.error(err);
     console.log("First object saved")
   });
-}
+
 let instance2 = new
   Bakery({
-    cakeCost: 100, cookieCost: 30,
-    cooldrinkCost: 400
+    cakeCost: 50, cookieCost: 80,
+    cooldrinkCost: 90
   });
 instance2.save(function (err, doc) {
   if (err) return console.error(err);
@@ -81,6 +69,9 @@ instance3.save(function (err, doc) {
   if (err) return console.error(err);
   console.log("Third object saved")
 });
+
+}
+
 
 
 
@@ -117,6 +108,20 @@ app.use('/resource', resourceRouter);
 // Use the existing connection 
 // The Account model  
 var Account =require('./models/account'); 
+//middleware8
+passport.use(new LocalStrategy( 
+  function(username, password, done) { 
+    Account.findOne({ username: username }, function (err, user) { 
+      if (err) { return done(err); } 
+      if (!user) { 
+        return done(null, false, { message: 'Incorrect username.' }); 
+      } 
+      if (!user.validPassword(password)) { 
+        return done(null, false, { message: 'Incorrect password.' }); 
+      } 
+      return done(null, user); 
+    }); 
+  })) ;
  
 passport.use(new LocalStrategy(Account.authenticate())); 
 passport.serializeUser(Account.serializeUser()); 
