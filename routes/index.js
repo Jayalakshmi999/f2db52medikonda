@@ -42,7 +42,8 @@ router.get('/login', function(req, res) {
     res.render('login', { title: 'Bakery App Login', user : req.user }); 
 }); 
  
-router.post('/login', passport.authenticate('local'), function(req, res) { 
+router.post('/login', passport.authenticate('local',{keepSessionInfo: true}), function(req, res) { 
+  console.log(req.session.returnTo)
   if(req.session.returnTo) 
       res.redirect(req.session.returnTo); 
     res.redirect('/'); 

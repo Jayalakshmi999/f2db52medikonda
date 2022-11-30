@@ -91,7 +91,8 @@ app.use(cookieParser());
 app.use(require('express-session')({ 
   secret: 'keyboard cat', 
   resave: false, 
-  saveUninitialized: false 
+  saveUninitialized: false ,
+  keepSessionInfo: true
 })); 
 app.use(passport.initialize()); 
 app.use(passport.session()); 

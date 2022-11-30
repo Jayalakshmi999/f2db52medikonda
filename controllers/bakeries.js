@@ -98,5 +98,7 @@ exports. secured = (req, res, next) => {
       return next(); 
     } 
     req.session.returnTo = req.originalUrl; 
+    console.log(req.session.returnTo)
+    console.log("hi")
     res.redirect("/login"); 
   } 
